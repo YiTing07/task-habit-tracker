@@ -1,14 +1,13 @@
 import { AiOutlineMenu, AiOutlinePlusSquare, AiFillFilter, AiOutlineQuestionCircle } from "react-icons/ai";
 
 
-export default function Navbar() {
-  
+export default function Navbar({ onOpenSidebar }) {
 
   return (
     <div className="bg-base-100">
       <div className="h-16 flex justify-between items-center px-3 border-b border-base-content">
         <div className="w-1/5 h-full flex items-center">
-          <button>
+          <button onClick={onOpenSidebar} >
             <AiOutlineMenu className="text-base-content hover:text-primary" size={25} />
           </button>
         </div>
@@ -28,7 +27,7 @@ export default function Navbar() {
             <button>
               <AiFillFilter className="text-base-content hover:text-primary" size={25} />
             </button>
-            
+           
           </div>
           
           <div className="h-full flex items-center">
@@ -40,7 +39,7 @@ export default function Navbar() {
         </div>
       </div>
 
-    
+  
     </div>
   )
 }
