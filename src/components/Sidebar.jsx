@@ -1,4 +1,3 @@
-import { CiTurnL1, CiCircleList, CiCalendar } from "react-icons/ci";
 import { AiFillLeftSquare, AiOutlineUnorderedList, AiOutlineCalendar } from "react-icons/ai";
 
 export default function Sidebar  ({ isOpen, onCloseSidebar }) {

@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { AiOutlineMenu, AiOutlinePlusSquare, AiFillFilter, AiOutlineQuestionCircle } from "react-icons/ai";
+import Modal from "./Modal/Modal";
 
 
 export default function Navbar({ onOpenSidebar }) {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  
+
+  const handleOpenModal = () => setIsOpenModal(true);
+  const handleCloseModal = () => setIsOpenModal(false);
+  
 
   return (
     <div className="bg-base-100">
@@ -27,11 +35,11 @@ export default function Navbar({ onOpenSidebar }) {
             <button>
               <AiFillFilter className="text-base-content hover:text-primary" size={25} />
             </button>
-           
+            
           </div>
           
           <div className="h-full flex items-center">
-            <button>
+            <button onClick={handleOpenModal}>
               <AiOutlineQuestionCircle className="text-base-content hover:text-primary" size={25} />
             </button>
           </div>
@@ -39,7 +47,7 @@ export default function Navbar({ onOpenSidebar }) {
         </div>
       </div>
 
-  
+      <Modal isOpen={isOpenModal} onClose={handleCloseModal} />
     </div>
   )
 }
