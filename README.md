@@ -1,16 +1,28 @@
-# React + Vite
+# 專案狀態（Work In Progress）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+此專案為「Task & Habit Tracker」原型，尚在開發中，先行上傳以便版本控管。
 
-Currently, two official plugins are available:
+## 目前進度
+- 已完成：
+  - 基本專案架構（React + Vite）與 ESLint 設定
+  - 介面骨架：`Navbar`、`Sidebar`、`Layout`
+  - 頁面雛形：`Task`、`Habit`
+  - Modal 與 `Carousel` 初版（UI/互動待調整）
+- 未完成：
+  - 任務/習慣資料模型與 CRUD 功能
+  - 資料持久化與狀態管理
+  - RWD/樣式細節、可及性（a11y）
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 開發執行
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
-
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 使用工具
+- 前端框架：React ^19.1.1、React DOM ^19.1.1
+- 開發打包：Vite ^7.1.7、@vitejs/plugin-react ^5.0.3
+- 路由：react-router-dom ^7.9.5
+- 樣式：Tailwind CSS ^4.1.13、@tailwindcss/vite ^4.1.13
+- 圖示：react-icons ^5.5.0
+- 程式品質：ESLint ^9.36.0（含 react-refresh、react-hooks、@eslint/js、globals）
