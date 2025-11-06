@@ -1,4 +1,5 @@
 import { AiFillLeftSquare, AiOutlineUnorderedList, AiOutlineCalendar } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 export default function Sidebar  ({ isOpen, onCloseSidebar }) {
   return (
@@ -12,13 +13,19 @@ export default function Sidebar  ({ isOpen, onCloseSidebar }) {
         </div>
 
         <ul className="p-3 ">
-          <li className="flex items-center text-xl p-4 rounded-2xl hover:bg-base-content hover:text-base-100">
+          <li 
+            className="flex items-center text-xl p-4 rounded-2xl hover:bg-base-content hover:text-base-100"
+            onClick={onCloseSidebar}
+          >
             <AiOutlineUnorderedList className="mr-3" size={30} />
-            <a href="#">代辦清單</a>
+            <Link to="/">代辦清單</Link>
           </li>
-          <li className="flex items-center text-xl p-4 rounded-2xl hover:bg-base-content hover:text-base-100">
+          <li 
+            className="flex items-center text-xl p-4 rounded-2xl hover:bg-base-content hover:text-base-100"
+            onClick={onCloseSidebar}
+          >
             <AiOutlineCalendar className="mr-3" size={30} />
-            <a href="#">習慣計畫</a>
+            <Link to="/habit">習慣計畫</Link>
           </li>
         </ul>
       </div>
