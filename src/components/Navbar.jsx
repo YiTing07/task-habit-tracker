@@ -3,7 +3,7 @@ import { AiOutlineMenu, AiOutlinePlusSquare, AiFillFilter, AiOutlineQuestionCirc
 import Modal from "./Modal/Modal";
 import Filter from "./Filter";
 
-export default function Navbar({ onOpenSidebar }) {
+export default function Navbar({ onOpenSidebar, onOpenEdit }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const filterRef = useRef(null);
@@ -44,9 +44,10 @@ export default function Navbar({ onOpenSidebar }) {
 
         <div className="w-1/5 h-full flex justify-evenly items-center">
           <div className="h-full flex items-center">
-            <button>
+            <button onClick={onOpenEdit}>
               <AiOutlinePlusSquare className="text-base-content hover:text-primary" size={25} />
             </button>
+            
           </div>
 
           <div ref={filterRef} className="relative h-full flex items-center">
