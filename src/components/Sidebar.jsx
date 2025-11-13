@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar  ({ isOpen, onCloseSidebar }) {
   return (
-    <div className={`fixed top-0 left-0 h-full w-full bg-base-100 ease-in-out duration-200 z-50 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+    <div className={`fixed h-screen w-screen top-0 bg-base-100 ease-in-out duration-200 z-50 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
       <div>
         <div className="flex items-center h-16 m-3 border-b border-gray-200">
           <button onClick={onCloseSidebar}>

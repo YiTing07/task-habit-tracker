@@ -57,13 +57,13 @@ export default function Habit () {
               <p className="text-sm text-center">今天：{item.progress} / {item.totalTime}</p>
 
               {/* 進度條 */}
-              <div className="w-full h-2 mt-3 bg-base-content rounded-full ">
+              <div className="w-full h-2 mt-3 bg-success-content rounded-full ">
                 <div 
                   className="h-full rounded-full"
                   style={{
                     width: `${(item.progress/item.totalTime) * 100}%`,
                     backgroundColor:
-                      item.progress === item.totalTime ? "var(--color-success)" : "var(--color-secondary)"
+                      item.progress === item.totalTime ? "var(--color-success)" : "var(--color-accent)"
                   }}  
                 ></div>
               </div>
