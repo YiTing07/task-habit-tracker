@@ -1,28 +1,38 @@
-# 專案狀態（Work In Progress）
+## Task & Habit Tracker（開發中）
 
-此專案為「Task & Habit Tracker」原型，尚在開發中，先行上傳以便版本控管。
+簡單的任務與習慣追蹤工具，主要用來練習 React、Context 與 localStorage。  
+目前仍在開發中，尚未加入篩選、重置、統計等進階功能。
 
-## 目前進度
-- 已完成：
-  - 基本專案架構（React + Vite）與 ESLint 設定
-  - 介面骨架：`Navbar`、`Sidebar`、`Layout`
-  - 頁面雛形：`Task`、`Habit`
-  - Modal 與 `Carousel` 初版（UI/互動待調整）
-- 未完成：
-  - 任務/習慣資料模型與 CRUD 功能
-  - 資料持久化與狀態管理
-  - RWD/樣式細節、可及性（a11y）
+## 目前已完成
+- 任務管理（Task）
+  - 新增 / 編輯 / 刪除任務
+  - 設定優先順序與截止日期
+  - 點擊卡片切換完成狀態
+- 習慣追蹤（Habit）
+  - 新增 / 編輯 / 刪除習慣
+  - 設定目標次數與頻率
+  - 點擊卡片累積進度，顯示進度條與完成狀態
+- 其他
+  - 基礎版面：`Navbar`、`Sidebar`、`Layout`
+  - Modal + 編輯面板（EditPanel）
+  - 任務 / 習慣皆使用 Context + localStorage 持久化
 
-## 開發執行
+## 規劃中（尚未完成）
+- 任務 / 習慣篩選與排序（例如依優先度、日期）
+- 重置按鈕（清除當期進度或全部資料）
+- 統計與視覺化（完成率、連續天數等）
+- RWD 與 UI 細節優化
+
+## 開發方式
+
 ```bash
 npm install
 npm run dev
 ```
 
-## 使用工具
-- 前端框架：React ^19.1.1、React DOM ^19.1.1
-- 開發打包：Vite ^7.1.7、@vitejs/plugin-react ^5.0.3
-- 路由：react-router-dom ^7.9.5
-- 樣式：Tailwind CSS ^4.1.13、@tailwindcss/vite ^4.1.13
-- 圖示：react-icons ^5.5.0
-- 程式品質：ESLint ^9.36.0（含 react-refresh、react-hooks、@eslint/js、globals）
+## 技術棧（簡要）
+- React + Vite
+- react-router-dom
+- Tailwind CSS
+- react-icons
+- ESLint
