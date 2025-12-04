@@ -1,29 +1,19 @@
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useState } from "react";
-
-const initialHabits = [
-  {
-    id: "habit-001",
-    title: "運動",
-    progress: 0,
-    totalTime: 2
-  },
-  {
-    id: "habit-002",
-    title: "喝水",
-    progress: 0,
-    totalTime: 10
-  }
-]
+import { useHabits } from "../context/HabitContext";
+import EditPanel from "../components/EditPanel/EditPanel";
 
 export default function Habit () {
-  const [habits, setHabits] = useState(initialHabits)
+  const { habits, setHabits, deleteHabit } = useHabits();
 
-  const handleClick = (id) => {
+  const [editOpen, setEditOpen] = useState(false);
+  const [editingHabit, setEditingHabit] = useState(null);
+
+  const handleHabitClick = (id) => {
     setHabits((prev) =>
       prev.map((habit) => {
         if (habit.id !== id) return habit;
-        const newProgress = Math.min(habit.progress + 1, habit.totalTime);
+        const newProgress = Math.min(habit.progress + 1, habit.numberTime);
 
         return {
           ...habit,
@@ -32,7 +22,18 @@ export default function Habit () {
       }
       )
     )
+  };
+
+  const handleEditClick = (habit) => {
+    setEditingHabit(habit);
+    setEditOpen(true);
   }
+
+  const handleEditClose = () => {
+    setEditOpen(false);
+    setEditingHabit(null);
+  }
+  
 
   return (
     <div className="h-dvh">
@@ -40,30 +41,39 @@ export default function Habit () {
         {habits.map((item) => (
           <div 
             key={item.id} 
-            className={`relative w-40 h-40 p-3 border  rounded-xl cursor-pointer transition-colors duration-200
+            className={`relative w-30 h-30 p-3 border  rounded-xl cursor-pointer transition-colors duration-200
               ${
-                item.progress === item.totalTime 
+                item.progress === item.numberTime
                 ? "bg-gray-100 text-gray-400 line-through" 
                 : "border-secondary hover:bg-cyan-50"
               }  
             `}
           >
-            <AiOutlineEdit className="absolute top-2 right-3 text-base-content" size={20} />
+            <AiOutlineDelete 
+              className="absolute top-2 left-3 text-base-content" 
+              size={20} 
+              onClick={() => deleteHabit(item.id)}  
+            />
+            <AiOutlineEdit 
+              className="absolute top-2 right-3 text-base-content" 
+              size={20} 
+              onClick={() => handleEditClick(item)}  
+            />
 
             <div 
               className="flex flex-col justify-center items-center h-full" 
-              onClick={() => handleClick(item.id)}>
+              onClick={() => handleHabitClick(item.id)}>
               <p className="my-3 pt-3 text-center">{item.title}</p>
-              <p className="text-sm text-center">今天：{item.progress} / {item.totalTime}</p>
+              <p className="text-sm text-center">本{item.frequency}：{item.progress} / {item.numberTime}</p>
 
               {/* 進度條 */}
               <div className="w-full h-2 mt-3 bg-success-content rounded-full ">
                 <div 
                   className="h-full rounded-full"
                   style={{
-                    width: `${(item.progress/item.totalTime) * 100}%`,
+                    width: `${(item.progress/item.numberTime) * 100}%`,
                     backgroundColor:
-                      item.progress === item.totalTime ? "var(--color-success)" : "var(--color-accent)"
+                      item.progress === item.numberTime ? "var(--color-success)" : "var(--color-accent)"
                   }}  
                 ></div>
               </div>
@@ -71,6 +81,8 @@ export default function Habit () {
           </div>
         ))}
       </div>    
+
+      <EditPanel isOpen={editOpen} onCloseEdit={handleEditClose} editingHabit={editingHabit} />
     </div>
   )
 }
