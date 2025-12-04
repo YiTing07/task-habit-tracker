@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TaskForm from "./TaskForm";
 import HabitForm from "./HabitForm";
@@ -14,9 +14,18 @@ const tabs = [
   }
 ]
 
-export default function EditPanel({ isOpen, onCloseEdit }) {
+export default function EditPanel({ isOpen, onCloseEdit, editingTask, editingHabit }) {
   const [activeTab, setActiveTab] = useState(0);
   const ActiveComponent = tabs[activeTab].component
+
+  // 當有編輯項目時，自動切換到對應的 tab
+  useEffect(() => {
+    if (editingHabit) {
+      setActiveTab(1); // 切換到習慣計畫 tab
+    } else if (editingTask) {
+      setActiveTab(0); // 切換到任務清單 tab
+    }
+  }, [editingHabit, editingTask])
 
   return (
     <div
@@ -49,7 +58,11 @@ export default function EditPanel({ isOpen, onCloseEdit }) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="absolute inset-0"
             >
-              <ActiveComponent handleCloseEdit={onCloseEdit} />
+              <ActiveComponent
+                handleCloseEdit={onCloseEdit}
+                editingTask={editingTask}
+                editingHabit={editingHabit}
+              />
             </motion.div>
           </AnimatePresence>
         </div>
